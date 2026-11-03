@@ -1,0 +1,90 @@
+{
+  "name": "@chassis-ui/website-icons",
+  "version": "0.1.0",
+  "description": "The icons of the Chassis Design System, in outline, solid and brand styles, as an icon font, an SVG sprite and optimized SVG files, built with @chassis-ui/icons",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chassis-ui/website-icons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chassis-ui/website-icons/issues"
+  },
+  "homepage": "https://chassis-ui.com/icons/",
+  "license": "MIT",
+  "author": "Ozgur Gunes <o.gunes@gmail.com>",
+  "keywords": [
+    "chassis",
+    "design system",
+    "icons",
+    "icon font",
+    "svg",
+    "svg sprite"
+  ],
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "main": "dist/web/chassis-icons.css",
+  "style": "dist/web/chassis-icons.css",
+  "sass": "dist/web/chassis-icons.scss",
+  "exports": {
+    ".": {
+      "sass": "./dist/web/chassis-icons.scss",
+      "style": "./dist/web/chassis-icons.css",
+      "default": "./dist/web/chassis-icons.css"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
+  "chassis": {
+    "build": {
+      "name": "chassis-icons",
+      "prefix": "cx",
+      "frame": 24,
+      "styles": [
+        "outline",
+        "solid",
+        "brand"
+      ],
+      "pairs": [
+        [
+          "outline",
+          "solid"
+        ]
+      ],
+      "startCodepoint": "f101",
+      "formats": [
+        "woff2",
+        "woff"
+      ],
+      "header": [
+        "Chassis Icons v{version}",
+        "Copyright 2025-2026 Ozgur Gunes",
+        "Licensed under MIT (https://github.com/chassis-ui/website-icons/blob/main/LICENSE)"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "chassis-icons build",
+    "lint": "chassis-icons lint-source",
+    "verify": "chassis-icons verify",
+    "preview": "chassis-icons preview --serve",
+    "archive": "chassis-icons archive",
+    "release-notes": "chassis-icons release-notes"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "devDependencies": {
+    "@chassis-ui/icons": "^0.5.0"
+  }
+}
