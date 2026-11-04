@@ -5,13 +5,16 @@ breaks without being told; the README explains the rest.
 
 ## Project
 
-@chassis-ui/website-icons holds the icons of the Chassis Design System: one SVG file per icon
+@chassis-ui/website-icons holds the icons of the Chassis website: one SVG file per icon
 in `source/`, built with [`@chassis-ui/icons`](https://www.npmjs.com/package/@chassis-ui/icons)
 into `dist/`: `dist/svgs/`, one optimized file per icon, `dist/web/`, the icon font
-`chassis-icons` with its stylesheets and the SVG sprite, and `dist/icons.json`, the index of
-the set. `chassis.build` in `package.json` names the font, the
-class prefix `cx-`, the frame and the styles `outline`, `solid` and `brand`, of which
-`outline` and `solid` come in pairs. The build is file-driven: a file saved into `source/` is
+`chassis-icons` with its stylesheets and the SVG sprite, `dist/icons.json`, the index of the
+set, and for apps `dist/ios/`, the asset catalog `ChassisIcons.xcassets` and the enum `CxIcon`,
+and `dist/android/`, the vector drawables `cx_<name>`. `dist/` is not committed: the release
+builds it, publishes the web part to npm, and attaches an archive per target.
+`chassis.build` in `package.json` names the font, the class prefix `cx-`, the frame, the
+styles `outline`, `solid` and `brand`, of which `outline` and `solid` come in pairs, and the
+targets `ios` and `android`. The build is file-driven: a file saved into `source/` is
 an icon of the next build, and there is no list to maintain. The set is shown on
 [chassis-ui.com/icons](https://chassis-ui.com/icons/), by the site of
 [chassis-ui/icons](https://github.com/chassis-ui/icons), which vendors this repository.
@@ -20,24 +23,25 @@ an icon of the next build, and there is no list to maintain. The set is shown on
 
 Once, with Node.js 22.12 or later: `pnpm install`.
 
-| Command              | What it does                                                                    |
-| -------------------- | ------------------------------------------------------------------------------- |
-| `pnpm build`         | Builds `dist/`, `codepoints.json`, `README.md` and the manifest                 |
-| `pnpm lint`          | Checks the files of `source/`: names, frame, color, pairs                       |
-| `pnpm verify`        | Fails when the output differs from a fresh build                                |
-| `pnpm preview`       | Writes the page of the set into `preview/` and serves it                        |
-| `pnpm archive`       | Writes `archives/chassis-icons-web-<version>.zip`, with the output and the page |
-| `pnpm release-notes` | Prints the changelog entry of the version, or fails                             |
+| Command              | What it does                                                                 |
+| -------------------- | ---------------------------------------------------------------------------- |
+| `pnpm build`         | Builds `dist/`, `codepoints.json`, `README.md` and the manifest              |
+| `pnpm lint`          | Checks the files of `source/`: names, frame, color, pairs                    |
+| `pnpm verify`        | Fails when the build fails, or a committed file is not what it writes        |
+| `pnpm preview`       | Writes the page of the set into `preview/` and serves it                     |
+| `pnpm archive`       | Writes `archives/chassis-icons-<target>-<version>.zip`: web, ios and android |
+| `pnpm release-notes` | Prints the changelog entry of the version, or fails                          |
 
 `node_modules/.bin/chassis-icons --help` prints every command and option: `build --only <step>`,
 `build --dry-run` and `verify --since <ref>` among them.
 
 ## Rules
 
-- **Edit `source/`, never the output.** `dist/`, `codepoints.json`, `README.md` and the
-  fields `main`, `style`, `sass`, `files`, `exports` and `sideEffects` of `package.json` are
-  written by `pnpm build`. Commit them with the change to `source/`. `preview/` and
-  `archives/` are written from the output and are not committed.
+- **Edit `source/`, never what the build writes.** `pnpm build` writes `dist/`, which is not
+  committed: the release builds it again. It also writes `codepoints.json`, `README.md` and
+  the fields `main`, `style`, `sass`, `files`, `exports` and `sideEffects` of `package.json`:
+  commit those with the change to `source/`. `preview/` and `archives/` are written from
+  `dist/` and are not committed.
 - **A file of `source/` is an icon.** Its name is the name of the icon, in kebab-case, and
   ends in a style of `chassis.build` when the set has styles. `pnpm lint` says what else a
   file needs: the frame, one color, no stroke.
@@ -61,6 +65,6 @@ A push to `main` with a new version in `package.json` releases it, so:
 
 - A new version and its entry in `CHANGELOG.md` go in one commit. The release stops without
   the entry. The entry names the icons that are added, renamed or removed.
-- Before that commit, run `pnpm build`, which writes the version into the stylesheets, and
-  `pnpm verify`.
+- Before that commit, run `pnpm verify`. The release builds `dist/` with the new version in
+  the headers of the stylesheets.
 - Do not push, tag or raise the version unless asked.

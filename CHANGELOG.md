@@ -13,7 +13,7 @@ up to `@chassis-ui/icons` 0.4.0-next.0.
 
 ### Added
 
-- The icons of the Chassis Design System, moved from `@chassis-ui/icons`, with the 501 icons
+- The icons of the Chassis website, moved from `@chassis-ui/icons`, with the 501 icons
   and the code points of its 0.4.0-next.0: the font `chassis-icons` with the class prefix
   `cx-`, in the styles `outline`, `solid` and `brand`. A project that installed
   `@chassis-ui/icons` for the set installs `@chassis-ui/website-icons`, and no icon changes
@@ -24,4 +24,10 @@ up to `@chassis-ui/icons` 0.4.0-next.0.
   the style.
 - The page of the set, which `pnpm preview` writes into `preview/` and serves, and which the
   archive of a release holds.
-- Built with `@chassis-ui/icons` 0.5.0, which is the builder of icon sets from this version on.
+- The icons for apps, in the archives of each release beside
+  `chassis-icons-web-<version>.zip`. `chassis-icons-ios-<version>.zip`: the asset catalog
+  `ChassisIcons.xcassets`, a template vector image per icon, and `ChassisIcons.swift`, the enum
+  `CxIcon` with `Image(CxIcon.<name>)` and `UIImage(CxIcon.<name>)`.
+  `chassis-icons-android-<version>.zip`: a vector drawable per icon, `R.drawable.cx_<name>`.
+  The npm package holds the files for the web only.
+- Built with `@chassis-ui/icons` 0.4.0, which is the builder of icon sets from this version on.
