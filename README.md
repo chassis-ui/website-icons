@@ -22,8 +22,6 @@ The files for iOS and Android are not in the package: they are in the archives o
 
 The last part of a name is the style of the icon: `<name>-outline`, `<name>-solid` or `<name>-brand`. The examples below show `alarm-clock-outline`.
 
-Browse the icons and their names on the [site of the set](https://chassis-ui.com/icons/).
-
 ## Use
 
 ### The icon font
