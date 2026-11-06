@@ -58,10 +58,19 @@ Once, with Node.js 22.12 or later: `pnpm install`.
 - **An icon of a style has its pair.** An `outline` icon comes with its `solid` icon and the
   other way round; `pnpm lint` says so when one is missing.
 
+## Branches
+
+- `main` holds the released versions, and takes a change by pull request only.
+- `next` is the prerelease channel. Work is merged into it first, and it is merged into `main`
+  with a merge commit, never a squash, so the two keep one history.
+- Any other branch is short-lived, `feat/…`, `fix/…` or `chore/…`, and is squash-merged.
+
 ## Releases
 
-A push to `main` with a new version in `package.json` releases it, so:
+A push to `main` or `next` with a new version in `package.json` releases it, so:
 
+- On `next`, only a version with a prerelease part, such as `0.4.0-next.0`, is released, as a
+  prerelease; on `main`, any new version. Each version, a prerelease too, has its entry.
 - A new version and its entry in `CHANGELOG.md` go in one commit. The release stops without
   the entry. The entry names the icons that are added, renamed or removed.
 - Before that commit, run `pnpm verify`. The release builds `dist/` with the new version in

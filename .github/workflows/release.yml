@@ -1,6 +1,6 @@
 name: Release
 
-# On a push to main, releases the version in package.json when it is new: publishes the
+# On a push, releases the version in package.json when it is new: publishes the
 # package when its registry does not have the version, and creates the tag v<version> and its
 # GitHub release, whose body is the entry of the version in CHANGELOG.md, with the archives
 # <font>-<target>-<version>.zip of the web, with the page of the set, and of each target
@@ -16,9 +16,12 @@ name: Release
 # npm trusted publishing: the package on npmjs.com trusts this workflow file of this
 # repository, so no npm token is needed. Renaming this file breaks publishing until the
 # trusted publisher on npmjs.com is updated to match.
+#
+# next is the prerelease channel: a push to next releases only a version with a prerelease part,
+# such as 0.4.0-next.0, and a version without one waits for main.
 on:
   push:
-    branches: [main]
+    branches: [main, next]
   workflow_dispatch:
 
 permissions:
@@ -32,8 +35,8 @@ concurrency:
 jobs:
   detect:
     name: Detect Version
-    # A manual run on another branch stops here
-    if: github.ref == 'refs/heads/main'
+    # A manual run on a branch other than main and next stops here
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -117,7 +120,10 @@ jobs:
   release:
     name: Release
     needs: detect
-    if: needs.detect.outputs.publish == 'true' || needs.detect.outputs.release == 'true'
+    # next releases only a prerelease. A version without a prerelease part waits for main
+    if: >-
+      (needs.detect.outputs.publish == 'true' || needs.detect.outputs.release == 'true') &&
+      (github.ref_name == 'main' || needs.detect.outputs.prerelease == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
