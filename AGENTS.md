@@ -16,7 +16,8 @@ builds it, publishes the web part to npm, and attaches an archive per target.
 styles `outline`, `solid` and `brand`, of which `outline` and `solid` come in pairs, and the
 targets `ios` and `android`. The build is file-driven: a file saved into `source/` is
 an icon of the next build, and there is no list to maintain. The page of the set, which
-`pnpm preview` writes into `preview/`, is in the web archive of each release.
+`pnpm preview` writes into `preview/`, is in the web archive of each release, and a push
+to `main` publishes it to GitHub Pages, at https://chassis-ui.github.io/website-icons/.
 
 ## Commands
 
