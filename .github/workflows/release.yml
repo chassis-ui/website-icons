@@ -27,9 +27,10 @@ on:
 permissions:
   contents: read
 
-# Never cancel a run that may be publishing
+# Never cancel a run that may be releasing. One group per branch: GitHub keeps one waiting run
+# per group and cancels it for a newer one, so a push to next must not wait in the group of main
 concurrency:
-  group: release
+  group: release-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:

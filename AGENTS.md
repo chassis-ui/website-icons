@@ -60,7 +60,8 @@ Once, with Node.js 22.12 or later: `pnpm install`.
 
 ## Branches
 
-- `main` holds the released versions, and takes a change by pull request only.
+- `main` holds the released versions, and takes a change only by a merge, done locally or by
+  a pull request.
 - `next` is the prerelease channel. Work is merged into it first, and it is merged into `main`
   with a merge commit, never a squash, so the two keep one history.
 - Any other branch is short-lived, `feat/…`, `fix/…` or `chore/…`, and is squash-merged.
@@ -71,6 +72,8 @@ A push to `main` or `next` with a new version in `package.json` releases it, so:
 
 - On `next`, only a version with a prerelease part, such as `0.4.0-next.0`, is released, as a
   prerelease; on `main`, any new version. Each version, a prerelease too, has its entry.
+- A stable version, such as `0.4.0`, is set on `next`, which does not release it. `next` is then
+  merged into `main`, which releases it, and `next` is fast-forwarded to `main`.
 - A new version and its entry in `CHANGELOG.md` go in one commit. The release stops without
   the entry. The entry names the icons that are added, renamed or removed.
 - Before that commit, run `pnpm verify`. The release builds `dist/` with the new version in
