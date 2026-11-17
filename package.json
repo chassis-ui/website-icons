@@ -65,8 +65,10 @@
       "startCodepoint": "f101",
       "formats": [
         "woff2",
-        "woff"
+        "woff",
+        "ttf"
       ],
+      "ligatures": true,
       "header": [
         "Chassis Icons v{version}",
         "Copyright 2025-2026 Ozgur Gunes",
@@ -90,6 +92,6 @@
     "node": ">=22.12.0"
   },
   "devDependencies": {
-    "@chassis-ui/icons": "^0.4.0"
+    "@chassis-ui/icons": "^0.5.0"
   }
 }

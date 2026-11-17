@@ -9,13 +9,13 @@ importers:
   .:
     devDependencies:
       '@chassis-ui/icons':
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.5.0
+        version: 0.5.0
 
 packages:
 
-  '@chassis-ui/icons@0.4.0':
-    resolution: {integrity: sha512-EROf303x6UUNOUaI+h7P/DQuBUwVbmgYJwkHm3p+aMos1kF6ZsynpBHXHqeBZ6nt3YVfHV4fPKYkGpZO0uD1nA==}
+  '@chassis-ui/icons@0.5.0':
+    resolution: {integrity: sha512-RaRU3WyZKuCZLytrV0T3q+2kLKeAzMUP5vTdEA7zCLVWXC3T7CkRab0SOR1LYrTMpiPlW2iBA014OaSorCTjhw==}
     engines: {node: '>=22.12.0'}
     hasBin: true
 
@@ -1105,15 +1105,18 @@ packages:
 
 snapshots:
 
-  '@chassis-ui/icons@0.4.0':
+  '@chassis-ui/icons@0.5.0':
     dependencies:
       clean-css: 5.3.3
       fantasticon: 4.1.0
       handlebars: 4.7.10
       picocolors: 1.1.1
       svg-sprite: 3.0.0-rc3
+      svg2ttf: 6.1.0
       svg2vectordrawable: 2.9.1
       svgo: 4.1.0
+      ttf2woff: 3.0.0
+      ttf2woff2: 8.0.1
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
