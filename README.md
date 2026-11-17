@@ -11,9 +11,9 @@ npm install @chassis-ui/website-icons
 ## What the package holds
 
 - `dist/svgs/<name>.svg`: one optimized file per icon
-- `dist/web/chassis-icons.css` and `dist/web/chassis-icons.min.css`: the stylesheet of the icon font, with one class per icon
+- `dist/web/chassis-icons.css` and `dist/web/chassis-icons.min.css`: the stylesheet of the icon font, with one class per icon and the class `cx`, which draws an icon from its name
 - `dist/web/chassis-icons.scss`: the same stylesheet for Sass, with the folder of the font and the map of the icons as variables
-- `dist/web/chassis-icons.woff2`, `dist/web/chassis-icons.woff`: the icon font, which the stylesheets load from their own folder
+- `dist/web/chassis-icons.woff2`, `dist/web/chassis-icons.woff`, `dist/web/chassis-icons.ttf`: the icon font, which the stylesheets load from their own folder
 - `dist/web/chassis-icons.svg`: the SVG sprite, one `<symbol>` per icon with the name of the icon as its `id`
 - `dist/web/chassis-icons.json`: the code point of each icon in the font, by name
 - `dist/icons.json`: the index of the set: its font name, class prefix, frame and styles, and each icon with its code point and its style
@@ -35,6 +35,16 @@ One class per icon, `cx-<name>`, on an empty element:
 ```
 
 With a bundler, `import '@chassis-ui/website-icons'` loads the same stylesheet and its font.
+
+### The names in the font
+
+The font draws an icon for its name, in an element of the class `cx`:
+
+```html
+<i class="cx" aria-hidden="true">alarm-clock-outline</i>
+```
+
+A screen reader reads the name, so an icon that means something gets a label of its own in place of `aria-hidden`. While the font loads, the stylesheet hides the name for up to three seconds.
 
 ### The SVG sprite
 

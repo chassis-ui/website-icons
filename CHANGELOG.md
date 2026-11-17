@@ -9,6 +9,19 @@ The history of the set before 0.1.0 is in the
 [changelog of Chassis Icons](https://github.com/chassis-ui/icons/blob/main/packages/icons/CHANGELOG.md),
 up to `@chassis-ui/icons` 0.4.0-next.0.
 
+## [0.2.0]
+
+### Added
+
+- The font draws each icon from its name, in an element of the class `cx`:
+  `<i class="cx" aria-hidden="true">alarm-clock-outline</i>`. The classes `cx-<name>` and the
+  code points do not change.
+- The TTF font, `dist/web/chassis-icons.ttf`, beside the WOFF2 and WOFF fonts.
+
+### Changed
+
+- Built with `@chassis-ui/icons` 0.5.0.
+
 ## [0.1.0]
 
 ### Added
