@@ -9,7 +9,7 @@ The history of the set before 0.1.0 is in the
 [changelog of Chassis Icons](https://github.com/chassis-ui/icons/blob/main/packages/icons/CHANGELOG.md),
 up to `@chassis-ui/icons` 0.4.0-next.0.
 
-## [Unreleased]
+## [0.2.0]
 
 ### Added
 

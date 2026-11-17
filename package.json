@@ -1,6 +1,6 @@
 {
   "name": "@chassis-ui/website-icons",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The icons of the Chassis website, in outline, solid and brand styles, as an icon font, an SVG sprite, optimized SVG files and files for iOS and Android, built with @chassis-ui/icons",
   "type": "module",
   "repository": {
